@@ -3,8 +3,6 @@
 !**/src/test/**/target/
 
 ### Maven Wrapper ###
-!.mvn/wrapper/maven-wrapper.jar
-
 ### IntelliJ IDEA ###
 .idea/
 *.iws
