@@ -22,8 +22,7 @@
     <bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
         <property name="prefix" value="/WEB-INF/templates/"/>
         <property name="suffix" value=".html"/>
-        <!-- 수정된 부분: templateMode를 Enum 타입으로 설정 -->
-        <property name="templateMode" value="HTML5"/>
+        <property name="templateMode" value="HTML"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
@@ -48,10 +47,5 @@
     </bean>
 
     <!-- 멀티파트 리졸버 -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 파일 크기 제한 설정 -->
-        <property name="maxUploadSize" value="5242880"/> <!-- 5MB -->
-        <property name="maxInMemorySize" value="1048576"/> <!-- 1MB -->
-    </bean>
-
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 </beans>

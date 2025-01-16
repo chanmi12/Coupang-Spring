@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
@@ -17,7 +18,6 @@
     <param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
 
-
   <!-- Spring MVC Dispatcher Servlet -->
   <servlet>
     <servlet-name>dispatcher</servlet-name>
@@ -27,6 +27,12 @@
       <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
+    <multipart-config>
+      <location>/tmp</location>
+      <max-file-size>5242880</max-file-size> <!-- 5MB -->
+      <max-request-size>20971520</max-request-size> <!-- 20MB -->
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
   </servlet>
 
   <servlet-mapping>
