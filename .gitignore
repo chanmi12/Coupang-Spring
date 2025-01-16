@@ -1,5 +1,4 @@
 ### Maven & Gradle Target Directories ###
-target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
