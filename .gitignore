@@ -37,6 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
+.applicationContext.xml
 ### applicationContext.xml ###
 src/main/webapp/WEB-INF/applicationContext.xml

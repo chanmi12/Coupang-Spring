@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ProductRepository {
+
     private final SqlSession sqlSession;
 
     public List<Product> findAll() {

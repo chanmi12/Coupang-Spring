@@ -11,27 +11,31 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <!-- Spring MVC 설정 -->
     <mvc:annotation-driven/>
     <mvc:resources mapping="/image/**" location="/resources/image/"/>
 
+    <!-- Component Scan -->
     <context:component-scan base-package="com.example"/>
 
-    <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+    <!-- Thymeleaf 설정 -->
+    <bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
         <property name="prefix" value="/WEB-INF/templates/"/>
         <property name="suffix" value=".html"/>
-        <property name="templateMode" value="HTML5"/>
+        <property name="templateMode" value="HTML"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
-    <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+    <bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>
     </bean>
 
-    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+    <bean class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
+    <!-- UTF-8 인코딩 설정 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -42,14 +46,6 @@
         </property>
     </bean>
 
-    <!-- 멀티파트 리졸버 설정 -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 업로드 가능한 파일의 최대 크기 설정 (예: 5MB) -->
-        <property name="maxUploadSize" value="5242880" />
-        <!-- 메모리 내에서 유지할 수 있는 최대 크기 설정 (예: 1MB) -->
-        <property name="maxInMemorySize" value="1048576" />
-        <!-- 파일 인코딩 설정 -->
-        <property name="defaultEncoding" value="utf-8" />
-    </bean>
-
+    <!-- 멀티파트 리졸버 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 </beans>
